@@ -21,8 +21,8 @@ Route::get('/a', function () {
 });
 
 Route::get('/jadwal',[jadwalController::class, 'index'])->middleware('auth:crew');
-Route::get('/',[AuthController::class, 'index']);
-Route::post('/login',[AuthController::class, 'login']);
+Route::get('/',[AuthController::class, 'index'])->name('login');
+Route::post('/login',[AuthController::class, 'login'])->name('login.submit');
 
 
 require __DIR__.'/auth.php';

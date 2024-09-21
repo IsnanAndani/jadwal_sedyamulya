@@ -47,6 +47,13 @@
     <div class="login-container">
         <h3 class="text-center mb-4">Crew Login</h3>
         
+        <!-- Alert for login errors -->
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                {{ $errors->first() }}
+            </div>
+        @endif
+        
         <!-- Login form -->
         <form method="POST" action="{{ url('login') }}">
             @csrf

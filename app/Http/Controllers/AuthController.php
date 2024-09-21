@@ -13,7 +13,6 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'id_crew' => 'required',
             'password' => 'required',
@@ -21,13 +20,11 @@ class AuthController extends Controller
 
         $credentials = $request->only('id_crew', 'password');
 
-
         if (auth()->guard('crew')->attempt($credentials)) {
-            return redirect('/jadwal');
+            return redirect('/jadwal'); // Adjust this route as necessary
         } else {
-            return redirect('/');
+            return redirect('/')
+                ->withErrors(['Invalid ID Crew or Password.']); // Pass the error message back
         }
-
-
     }
 }
